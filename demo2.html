@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+        document.getElementById('trans-btn').onclick = function () {
+            let num = document.getElementById('dec-number').value;
+            dec2bin(num);
+        };
+
+        function dec2bin(decNumber) {
+            //字符串取整
+            var x = parseInt(decNumber);
+            //判断是否为正整数
+            if (decNumber < 0 || x != decNumber) {
+                alert('请输入正整数');
+
+            } else {
+                let res = covertBinary(decNumber);
+                document.getElementById('result').innerHTML = '运算结果' + res;
+            }
+        }
+        function covertBinary(num2) {
+            let resArry = [];
+            for (let i = 0; num2 > 0; i++) {
+                
+                resArry.push(num2 % 2)
+                //除2取整
+                num2 = parseInt(num2 / 2);
+
+            }
+
+            //倒序
+            resArry.reverse();
+            //数组输出字符串
+            return resArry.join('');
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
